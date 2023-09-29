@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import emailjs from "emailjs-com";
 import React from "react";
 
@@ -15,19 +15,40 @@ export const Contact = (props) => {
     setState((prevState) => ({ ...prevState, [name]: value }));
   };
   const clearState = () => setState({ ...initialState });
+  const nameField = useRef();
+  const emailField = useRef();
+  const subjectField = useRef();
+  const messageField = useRef();
+
+  const clearFeilds = () => {
+    nameField.current.value = "";
+    emailField.current.value = "";
+    subjectField.current.value = "";
+    messageField.current.value = "";
+  };
+
+  const form = useRef();
 
   const handleSubmit = (e) => {
+    console.log(form.current);
     e.preventDefault();
     console.log(name, email, message);
     emailjs
-      .sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", e.target, "YOUR_USER_ID")
+      .sendForm(
+        process.env.REACT_APP_SERIVCE_ID,
+        process.env.REACT_APP_CONTACT_TEMPLATE_ID,
+        form.current,
+        process.env.REACT_APP_USER_ID
+      )
       .then(
         (result) => {
-          console.log(result.text);
-          clearState();
+          console.log("result", result.text);
+          clearFeilds();
+          // clearState();
         },
         (error) => {
-          console.log(error.text);
+          console.log("error", error.text);
+          alert("Unable to send your message, please try again later");
         }
       );
   };
@@ -44,14 +65,29 @@ export const Contact = (props) => {
                   get back to you as soon as possible.
                 </p>
               </div>
-              <form name="sentMessage" validate onSubmit={handleSubmit}>
+              {/* <form ref={form} onSubmit={handleSubmit}>
+                <label>Name</label>
+                <input type="text" name="user_name" />
+                <label>Email</label>
+                <input type="email" name="user_email" />
+                <label>Message</label>
+                <textarea name="message" />
+                <input type="submit" value="Send" />
+              </form> */}
+              <form
+                ref={form}
+                name="sentMessage"
+                validate
+                onSubmit={handleSubmit}
+              >
                 <div className="row">
                   <div className="col-md-6">
                     <div className="form-group">
                       <input
+                        ref={nameField}
                         type="text"
-                        id="name"
-                        name="name"
+                        id="user_name"
+                        name="user_name"
                         className="form-control"
                         placeholder="Name"
                         required
@@ -63,9 +99,10 @@ export const Contact = (props) => {
                   <div className="col-md-6">
                     <div className="form-group">
                       <input
+                        ref={emailField}
                         type="email"
-                        id="email"
-                        name="email"
+                        id="user_email"
+                        name="user_email"
                         className="form-control"
                         placeholder="Email"
                         required
@@ -75,8 +112,24 @@ export const Contact = (props) => {
                     </div>
                   </div>
                 </div>
+                <div className="col-md-14">
+                  <div className="form-group">
+                    <input
+                      ref={subjectField}
+                      // type="email"
+                      id="subject"
+                      name="subject"
+                      className="form-control"
+                      placeholder="Subject"
+                      required
+                      onChange={handleChange}
+                    />
+                    {/* <p className="help-block text-danger"></p> */}
+                  </div>
+                </div>
                 <div className="form-group">
                   <textarea
+                    ref={messageField}
                     name="message"
                     id="message"
                     className="form-control"
@@ -95,7 +148,7 @@ export const Contact = (props) => {
             </div>
           </div>
           <div className="col-md-3 col-md-offset-1 contact-info">
-            <div className="contact-item">
+            {/* <div className="contact-item">
               <h3>Contact Info</h3>
               <p>
                 <span>
@@ -103,25 +156,31 @@ export const Contact = (props) => {
                 </span>
                 {props.data ? props.data.address : "loading"}
               </p>
-            </div>
-            <div className="contact-item">
+            </div> */}
+            {/* <div className="contact-item">
               <p>
                 <span>
                   <i className="fa fa-phone"></i> Phone
                 </span>{" "}
                 {props.data ? props.data.phone : "loading"}
               </p>
-            </div>
+            </div> */}
             <div className="contact-item">
               <p>
-                <span>
-                  <i className="fa fa-envelope-o"></i> Email
+                <span className="emailLabel">
+                  <i className="fa fa-envelope-o"></i>{" "}
+                  <p className="emailLabel">Email</p>
                 </span>{" "}
-                {props.data ? props.data.email : "loading"}
+                <a
+                  className="emailLink"
+                  href={"mailto:" + (props.data ? props.data.email : "")}
+                >
+                  {props.data ? props.data.email : "loading"}
+                </a>
               </p>
             </div>
           </div>
-          <div className="col-md-12">
+          {/* <div className="col-md-12">
             <div className="row">
               <div className="social">
                 <ul>
@@ -143,10 +202,10 @@ export const Contact = (props) => {
                 </ul>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
-      <div id="footer">
+      {/* <div id="footer">
         <div className="container text-center">
           <p>
             &copy; 2023 Issaaf Kattan React Land Page Template. Design by{" "}
@@ -155,7 +214,7 @@ export const Contact = (props) => {
             </a>
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

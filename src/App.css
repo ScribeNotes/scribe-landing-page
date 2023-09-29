@@ -1,5 +1,5 @@
 @media screen and (max-width: 400px) {
-  #features {
+  */ #features {
     padding: 20px;
     width: 111%;
   }
@@ -14,5 +14,9 @@
 
   #portfolio {
     width: 110%;
+  }
+
+  #input {
+    height: 300;
   }
 }

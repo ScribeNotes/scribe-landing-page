@@ -1,21 +1,21 @@
 {
   "Header": {
-    "title": "We are a Landing Page",
-    "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sed commodo nibh ante facilisis bibendum."
+    "title": "",
+    "paragraph": "Accelerate your workflow with the power of math evaluation at your pencil tip"
   },
   "About": {
-    "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "paragraph": "Scribe is a powerful note taking app that opens up a whole new range of functions for your handritten notes. Using groundbreaking OCR technology and other new advancements in Artificial Intelligence. Scribe is able to convert handwriting to text, process this text, and write the output in your handwriting on the same page in milliseconds.",
     "Why": [
-      "Lorem ipsum dolor",
-      "Tempor incididunt",
-      "Lorem ipsum dolor",
-      "Incididunt ut labore"
+      "Evaluate simple math expressions",
+      "Complete monotonous plug and chug problems",
+      "Solve for variables",
+      "Graph equations"
     ],
     "Why2": [
-      "Aliquip ex ea commodo",
-      "Lorem ipsum dolor",
-      "Exercitation ullamco",
-      "Lorem ipsum dolor"
+      "Solve systems of equations",
+      "Solve integrals",
+      "Solve derrivatives",
+      "Linear algebra"
     ]
   },
   "Gallery": [
@@ -154,7 +154,7 @@
   "Contact": {
     "address": "4321 California St, San Francisco, CA 12345 ",
     "phone": "+1 123 456 1234",
-    "email": "info@company.com",
+    "email": "info@use-scribe.co",
     "facebook": "fb.com",
     "twitter": "twitter.com",
     "youtube": "youtube.com"
