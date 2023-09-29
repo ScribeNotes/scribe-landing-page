@@ -14,7 +14,6 @@ export const Contact = (props) => {
     const { name, value } = e.target;
     setState((prevState) => ({ ...prevState, [name]: value }));
   };
-  const clearState = () => setState({ ...initialState });
   const nameField = useRef();
   const emailField = useRef();
   const subjectField = useRef();
@@ -44,7 +43,6 @@ export const Contact = (props) => {
         (result) => {
           console.log("result", result.text);
           clearFeilds();
-          // clearState();
         },
         (error) => {
           console.log("error", error.text);
