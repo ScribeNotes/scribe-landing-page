@@ -12,7 +12,7 @@ export const Header = (props) => {
                   src={"/img/scribe_written.gif"}
                   alt="scribe-gif"
                   width="100%"
-                  height="80%"
+                  height="auto"
                 />
                 {/* <h1>
                   {props.data ? props.data.title : "Loading"}
