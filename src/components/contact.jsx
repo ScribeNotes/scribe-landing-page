@@ -9,6 +9,7 @@ const initialState = {
 };
 export const Contact = (props) => {
   const [{ name, email, message }, setState] = useState(initialState);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,6 +30,7 @@ export const Contact = (props) => {
   const form = useRef();
 
   const handleSubmit = (e) => {
+    setSubmitted(true);
     console.log(form.current);
     e.preventDefault();
     console.log(name, email, message);
@@ -63,106 +65,87 @@ export const Contact = (props) => {
                   get back to you as soon as possible.
                 </p>
               </div>
-              {/* <form ref={form} onSubmit={handleSubmit}>
-                <label>Name</label>
-                <input type="text" name="user_name" />
-                <label>Email</label>
-                <input type="email" name="user_email" />
-                <label>Message</label>
-                <textarea name="message" />
-                <input type="submit" value="Send" />
-              </form> */}
-              <form
-                ref={form}
-                name="sentMessage"
-                validate
-                onSubmit={handleSubmit}
-              >
-                <div className="row">
-                  <div className="col-md-6">
+              {!submitted ? (
+                <form
+                  ref={form}
+                  name="sentMessage"
+                  validate
+                  onSubmit={handleSubmit}
+                >
+                  <div className="row">
+                    <div className="col-md-6">
+                      <div className="form-group">
+                        <input
+                          ref={nameField}
+                          type="text"
+                          id="user_name"
+                          name="user_name"
+                          className="form-control"
+                          placeholder="Name"
+                          required
+                          onChange={handleChange}
+                        />
+                        <p className="help-block text-danger"></p>
+                      </div>
+                    </div>
+                    <div className="col-md-6">
+                      <div className="form-group">
+                        <input
+                          ref={emailField}
+                          type="email"
+                          id="user_email"
+                          name="user_email"
+                          className="form-control"
+                          placeholder="Email"
+                          required
+                          onChange={handleChange}
+                        />
+                        <p className="help-block text-danger"></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-14">
                     <div className="form-group">
                       <input
-                        ref={nameField}
-                        type="text"
-                        id="user_name"
-                        name="user_name"
+                        ref={subjectField}
+                        id="subject"
+                        name="subject"
                         className="form-control"
-                        placeholder="Name"
+                        placeholder="Subject"
                         required
                         onChange={handleChange}
                       />
-                      <p className="help-block text-danger"></p>
                     </div>
                   </div>
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <input
-                        ref={emailField}
-                        type="email"
-                        id="user_email"
-                        name="user_email"
-                        className="form-control"
-                        placeholder="Email"
-                        required
-                        onChange={handleChange}
-                      />
-                      <p className="help-block text-danger"></p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-14">
                   <div className="form-group">
-                    <input
-                      ref={subjectField}
-                      // type="email"
-                      id="subject"
-                      name="subject"
+                    <textarea
+                      ref={messageField}
+                      name="message"
+                      id="message"
                       className="form-control"
-                      placeholder="Subject"
+                      rows="4"
+                      placeholder="Message"
                       required
                       onChange={handleChange}
-                    />
-                    {/* <p className="help-block text-danger"></p> */}
+                    ></textarea>
+                    <p className="help-block text-danger"></p>
                   </div>
+                  <div id="success"></div>
+                  <button type="submit" className="btn btn-custom btn-lg">
+                    Send Message
+                  </button>
+                </form>
+              ) : (
+                <div>
+                  <h3>
+                    Your email has been sent and we will be in contact with you
+                    soon.
+                  </h3>
                 </div>
-                <div className="form-group">
-                  <textarea
-                    ref={messageField}
-                    name="message"
-                    id="message"
-                    className="form-control"
-                    rows="4"
-                    placeholder="Message"
-                    required
-                    onChange={handleChange}
-                  ></textarea>
-                  <p className="help-block text-danger"></p>
-                </div>
-                <div id="success"></div>
-                <button type="submit" className="btn btn-custom btn-lg">
-                  Send Message
-                </button>
-              </form>
+              )}
             </div>
           </div>
           <div className="col-md-3 col-md-offset-1 contact-info">
-            {/* <div className="contact-item">
-              <h3>Contact Info</h3>
-              <p>
-                <span>
-                  <i className="fa fa-map-marker"></i> Address
-                </span>
-                {props.data ? props.data.address : "loading"}
-              </p>
-            </div> */}
-            {/* <div className="contact-item">
-              <p>
-                <span>
-                  <i className="fa fa-phone"></i> Phone
-                </span>{" "}
-                {props.data ? props.data.phone : "loading"}
-              </p>
-            </div> */}
             <div className="contact-item">
               <p>
                 <span className="emailLabel">
@@ -178,41 +161,8 @@ export const Contact = (props) => {
               </p>
             </div>
           </div>
-          {/* <div className="col-md-12">
-            <div className="row">
-              <div className="social">
-                <ul>
-                  <li>
-                    <a href={props.data ? props.data.facebook : "/"}>
-                      <i className="fa fa-facebook"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href={props.data ? props.data.twitter : "/"}>
-                      <i className="fa fa-twitter"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href={props.data ? props.data.youtube : "/"}>
-                      <i className="fa fa-youtube"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
-      {/* <div id="footer">
-        <div className="container text-center">
-          <p>
-            &copy; 2023 Issaaf Kattan React Land Page Template. Design by{" "}
-            <a href="http://www.templatewire.com" rel="nofollow">
-              TemplateWire
-            </a>
-          </p>
-        </div>
-      </div> */}
     </div>
   );
 };

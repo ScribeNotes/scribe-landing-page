@@ -6,6 +6,7 @@ const Waitlist = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [purpose, setPurpose] = useState("");
+  const [onWaitlist, setOnwaitlist] = useState(false);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -20,6 +21,7 @@ const Waitlist = () => {
   };
 
   const handleJoinWaitlist = () => {
+    setOnwaitlist(true);
     submitGoogleForm(name, email, purpose);
 
     var templateParams = {
@@ -52,114 +54,62 @@ const Waitlist = () => {
   };
 
   return (
-    <div
-      id="waitlist"
-      className="px-20 text-center"
-      //   tab-index="-1"
-      //   style="outline: none;"
-    >
+    <div id="waitlist" className="px-20 text-center">
       <div className="container">
         <div className="col-md-10 col-md-offset-1 section-title">
           <h2 className="about-text">Scribe is coming soon to IOS...</h2>
           <h3> Join the waitlist to for early access to our beta version</h3>
         </div>
-        <div className="col-md-10 col-md-offset-1 section-title">
-          <form>
-            <div class="form-group">
-              <label
-                className="form-label2"
-                //   for="exampleInputEmail1"
-              >
-                Name
-              </label>
-              <input
-                value={name}
-                type="text"
-                class="form-control"
-                id="exampleInputName1"
-                placeholder="Name"
-                onChange={handleNameChange}
-              />
-            </div>
-            <div class="form-group">
-              <label
-                className="form-label2"
-                //   for="exampleInputPassword1"
-              >
-                Email
-              </label>
-              <input
-                value={email}
-                type="email"
-                class="form-control"
-                id="exampleInputEmail1"
-                placeholder="Email"
-                onChange={handleEmailChange}
-              />
-            </div>
-            <div class="form-group">
-              <label className="form-label2">
-                What do you plan to use Scribe for?
-              </label>
-              <input
-                value={purpose}
-                class="form-control"
-                // id="exampleInputPassword1"
-                placeholder=""
-                onChange={handlePurposeChange}
-              />
-            </div>
-            {/* <button
-            //   className="btn btn-custom2 btn-lg page-scroll"
-            //   type="submit"
-            //   class="btn btn-default"
-            //   onClick={handleJoinWaitlist}
-            >
+
+        {!onWaitlist ? (
+          <div className="col-md-10 col-md-offset-1 section-title">
+            <form>
+              <div class="form-group">
+                <label className="form-label2">Name</label>
+                <input
+                  value={name}
+                  type="text"
+                  class="form-control"
+                  id="exampleInputName1"
+                  placeholder="Name"
+                  onChange={handleNameChange}
+                />
+              </div>
+              <div class="form-group">
+                <label className="form-label2">Email</label>
+                <input
+                  value={email}
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  placeholder="Email"
+                  onChange={handleEmailChange}
+                />
+              </div>
+              <div class="form-group">
+                <label className="form-label2">
+                  What do you plan to use Scribe for?
+                </label>
+                <input
+                  value={purpose}
+                  class="form-control"
+                  placeholder=""
+                  onChange={handlePurposeChange}
+                />
+              </div>
+            </form>
+
+            <button class="btn btn-join" onClick={handleJoinWaitlist}>
               Join
-            </button> */}
-          </form>
-
-          <button
-            // className="btn-join" //"btn btn-custom2 btn-lg page-scroll"
-            // type="submit"
-            class="btn btn-join"
-            onClick={handleJoinWaitlist}
-          >
-            Join
-          </button>
-        </div>
-
-        {/* <div className="row">
-          <input
-            className="input-lg"
-            id="input"
-            type="name"
-            placeholder="Name"
-            value={email}
-            onChange={handleEmailChange}
-          />
-          <input
-            className="input-lg"
-            id="input"
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={handleEmailChange}
-          />
-          <input
-            className="input-lg"
-            id="input"
-            placeholder="What do you plan to use Scribe for?"
-            value={email}
-            onChange={handleEmailChange}
-          />
-          <button
-            className="btn btn-custom2 btn-lg page-scroll"
-            onClick={handleJoinWaitlist}
-          >
-            Join Waitlist
-          </button>
-        </div> */}
+            </button>
+          </div>
+        ) : (
+          <div>
+            <h2 className="about-text">
+              Thanks for joining the Scribe waitlist. We'll be in touch soon.
+            </h2>
+          </div>
+        )}
       </div>
     </div>
   );
