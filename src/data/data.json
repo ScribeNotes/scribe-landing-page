@@ -4,14 +4,14 @@
     "paragraph": "Accelerate your workflow with the power of math evaluation at your pencil tip"
   },
   "About": {
-    "paragraph": "Scribe is a powerful note taking app that opens up a whole new range of functions for your handritten notes. Using groundbreaking OCR technology and other new advancements in Artificial Intelligence. Scribe is able to convert handwriting to text, process this text, and write the output in your handwriting on the same page in milliseconds.",
+    "paragraph": "Scribe is a powerful note taking app that opens up a whole new range of functions for your handritten notes. Using groundbreaking OCR technology and other new advancements in Artificial Intelligence. Scribe is able to convert handwriting to text, process this text, and write the output in your handwriting on the same page in seconds.",
     "Why": [
-      "Evaluate simple math expressions",
+      "Evaluate complex math expressions with roots, exponents, complex numbers, and more",
       "Complete monotonous plug and chug problems",
-      "Solve for variables",
-      "Graph equations"
+      "Solve limits"
     ],
     "Why2": [
+      "Graph equations",
       "Solve systems of equations",
       "Solve integrals",
       "Solve derrivatives",
