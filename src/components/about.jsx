@@ -7,11 +7,19 @@ export const About = (props) => {
         <div className="row">
           <div className="col-xs-12 col-md-6">
             {" "}
-            <img
+            {/* <img
               src="img/math_pic.jpg"
               className="img-responsive"
               alt=""
-            />{" "}
+            />{" "} */}
+            <video
+              src={props.data ? props.data.video : ""}
+              controls // This attribute adds video controls (play, pause, etc.)
+              width="550"
+              height="360"
+            >
+              Unable to load video
+            </video>
           </div>
           <div className="col-xs-12 col-md-6">
             <div className="about-text">
