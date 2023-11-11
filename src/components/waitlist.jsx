@@ -77,7 +77,7 @@ const Waitlist = () => {
               </div>
               <div class="form-group">
                 <label className="form-label2">
-                  Email (must be the one you use for icloud)
+                  Email (must be the one you use for the App Store)
                 </label>
                 <input
                   value={email}
