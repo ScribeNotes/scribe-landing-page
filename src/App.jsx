@@ -15,12 +15,7 @@ export const scroll = new SmoothScroll('a[href*="#"]', {
 });
 
 const App = () => {
-  const [landingPageData, setLandingPageData] = useState({});
   const [currentPage, setCurrentPage] = useState("home");
-
-  useEffect(() => {
-    setLandingPageData(JsonData);
-  }, []);
 
   useEffect(() => {
     // Extract the current page from the URL
@@ -28,11 +23,11 @@ const App = () => {
     setCurrentPage(path === "/privacypolicy" ? "privacypolicy" : "home");
   }, []);
 
-  const navigateTo = (page) => {
-    setCurrentPage(page);
-    // Update the URL based on the chosen page
-    window.history.pushState({}, page, `/${page}`);
-  };
+  // const navigateTo = (page) => {
+  //   setCurrentPage(page);
+  //   // Update the URL based on the chosen page
+  //   window.history.pushState({}, page, `/${page}`);
+  // };
 
   return (
     <div>
@@ -71,22 +66,5 @@ const Home = () => {
     </div>
   );
 };
-
-//   return (
-//       <div>
-//         <Navigation />
-//         <Header data={landingPageData.Header} />
-//         {/* <Features data={landingPageData.Features} /> */}
-//         {/* <div id="waitlist" className="mt-20" /> */}
-//         <Waitlist data={landingPageData.Features} />
-//         <About data={landingPageData.About} />
-//         {/* <Services data={landingPageData.Services} /> */}
-//         {/* <Gallery data={landingPageData.Gallery} /> */}
-//         {/* <Testimonials data={landingPageData.Testimonials} /> */}
-//         {/* <Team data={landingPageData.Team} /> */}
-//         <Contact data={landingPageData.Contact} />
-//       </div>
-//   );
-// };
 
 export default App;
